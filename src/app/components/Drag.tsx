@@ -2,6 +2,7 @@
 import React, { useCallback, useState } from 'react';
 import { LinePath } from '@visx/shape';
 import { useDrag } from '@visx/drag';
+import { DragState } from '@visx/drag/lib/useDrag';
 import { curveBasis } from '@visx/curve';
 import { LinearGradient } from '@visx/gradient';
 
@@ -18,18 +19,22 @@ export type DragIIProps = {
 
 export default function DragII({ width, height, lines, setLines }: DragIIProps) {
   const onDragStart = useCallback(
-    (currDrag) => {
+    (currDrag: DragState) => {
       // add the new line with the starting point
-      setLines((currLines) => [...currLines, [{ x: currDrag.x, y: currDrag.y }]]);
+      setLines((currLines: Lines) => [...currLines, [{ x: currDrag.x, y: currDrag.y }]]);
     },
     [setLines],
   );
   const onDragMove = useCallback(
-    (currDrag) => {
+    (currDrag: DragState) => {
       // add the new point to the current line
-      setLines((currLines) => {
+      setLines((currLines: Lines) => {
         const nextLines = [...currLines];
-        const newPoint = { x: currDrag.x + currDrag.dx, y: currDrag.y + currDrag.dy };
+        const newPoint = {
+          x: (currDrag.x ?? 0) + (currDrag.dx ?? 0),
+          y: (currDrag.y ?? 0) + (currDrag.dy ?? 0),
+        };
+        //const newPoint = { x: currDrag.x + currDrag.dx, y: currDrag.y + currDrag.dy };
         const lastIndex = nextLines.length - 1;
         nextLines[lastIndex] = [...(nextLines[lastIndex] || []), newPoint];
         return nextLines;
@@ -51,12 +56,11 @@ export default function DragII({ width, height, lines, setLines }: DragIIProps) 
     onDragMove,
     resetOnStart: true,
   });
-console.log(width)
   return width < 10 ? null : (
     <div className="DragII" style={{ touchAction: 'none' }}>
-      <svg width={width} height={height}>
+      <svg width={width} height={height} className='border-1 border-black rounded-xl'>
         <LinearGradient id="stroke" from="#000000" to="#000000" />
-        <rect fill="#ffffff" width={width} height={height} rx={14} />
+        <rect fill="#ffffff" width={width} height={height} rx={14}/>
         {lines.map((line, i) => (
           <LinePath
             key={`line-${i}`}
