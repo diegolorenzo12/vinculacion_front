@@ -76,15 +76,15 @@ export default function Login() {
     }
 
   return (
-    <main className="flex min-h-screen flex-col items-center w-full justify-center">
+    <main className="flex min-h-screen flex-col items-center w-full justify-center bg-yellow">
         <Card className="lg:w-1/3 md:w-1/2 w-[90%]">
             <CardBody className="flex-col justify-center items-center w-full py-6"  style={{ overflowX: 'hidden' }}>
-                <h1 className="text-xl font-bold">Login</h1>
+                <h1 className="text-xl font-bold">Inicio de sesión</h1>
                 <form onSubmit={handleSubmit} className="px-2 m-2 flex flex-col justify-center items-center w-full">
                     <Input 
                         type="text" 
                         placeholder="m012345" 
-                        label="Matricula" 
+                        label="Matrícula" 
                         isRequired 
                         className="py-3" 
                         value={user}
@@ -92,13 +92,13 @@ export default function Login() {
                     />
                     <Input 
                         type="password" 
-                        label="contraseña" 
+                        label="Contraseña" 
                         isRequired 
                         className="py-3"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
-                    <Button type="submit" color="primary" className="py-3" isLoading={loading}>Entrar</Button>
+                    <Button type="submit" color="primary" className="bg-black w-full py-3" isLoading={loading}>Entrar</Button>
                 </form>
             </CardBody>
         </Card>
