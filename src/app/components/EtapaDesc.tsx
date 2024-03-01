@@ -6,7 +6,7 @@ const EtapaDesc = ({posicion, titulo, descripcion} : {posicion: number, titulo: 
                     {posicion}
                 </div>
                 <div className="flex ml-2 justify-center place-items-center font-bold text-xl">
-                    Solicitud de Prácticas
+                    {titulo}
                 </div>
             </div>
             <p>{descripcion}</p>
