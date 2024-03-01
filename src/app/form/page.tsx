@@ -1,5 +1,5 @@
 'use client'
-import { Input , Button, Textarea, Popover, PopoverTrigger, PopoverContent, Select, SelectItem} from "@nextui-org/react";
+import { Input , Button, Textarea, Popover, PopoverTrigger, PopoverContent, Select, SelectItem, Link} from "@nextui-org/react";
 import {  Table,  TableHeader,  TableBody,  TableColumn,  TableRow,  TableCell} from "@nextui-org/react";
 import DragII from "../components/Drag";
 import { useState } from "react";
@@ -394,7 +394,7 @@ export default function Form() {
                     <DragII lines={signCoordinador} setLines={setSignCoordinador} width={400} height={200}/>
                     <div className="flex flex-row justify-around w-full">
                         <Button onPress={()=>setSignCoordinador([])}> Borrar </Button>
-                        <Button> Enviar </Button>
+                        <Button as={Link} href="/signature" target="_blank"> Enviar link</Button>
                     </div> 
                 </div>
                 <div className="flex flex-col justify-center items-center my-4">
@@ -402,7 +402,7 @@ export default function Form() {
                     <DragII lines={signBoss} setLines={setSignBoss} width={400} height={200}/> 
                     <div className="flex flex-row justify-around w-full">
                         <Button onPress={()=>setSignBoss([])}> Borrar </Button> 
-                        <Button> Enviar </Button>
+                        <Button> Enviar link</Button>
                     </div> 
                 </div>
                 <div className="flex flex-col justify-center items-center my-4">
@@ -410,7 +410,7 @@ export default function Form() {
                     <DragII lines={signRH} setLines={setSignRH} width={400} height={200}/> 
                     <div className="flex flex-row justify-around w-full">
                         <Button onPress={()=>setSignRH([])}> Borrar </Button> 
-                        <Button> Enviar </Button>
+                        <Button> Enviar link</Button>
                     </div> 
                 </div>
             </div>
