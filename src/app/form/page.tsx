@@ -62,7 +62,10 @@ export default function Form() {
             height={200}
             alt="Cetys logo"
         />
-        <h1 className="text-2xl font-bold mt-1">Reporte de Practicas Profesionales</h1>
+        <div className="flex justify-center items-center h-48 relative text-center">
+            <h2 className="text-9xl font-extrabold absolute opacity-20">1</h2>
+            <h1 className="text-2xl font-bold z-10">Reporte de Practicas Profesionales</h1>
+        </div>
         <form className="m-2 flex flex-col justify-center items-center w-full">
             <div className="w-2/3 mt-3">
                 <h2 className="text-lg font-semibold">Datos del alumno</h2>
@@ -340,8 +343,7 @@ export default function Form() {
                     </Table>
                 </div>
 
-            <div className="w-2/3 mt-3">
-                
+            <div className="w-2/3 mt-4">
                 <h2 className="text-lg font-semibold">Actividades de la Practica Profesional</h2>
                 <Textarea
                     type="text"
@@ -354,10 +356,13 @@ export default function Form() {
                     placeholder="ej: 400"
                     label="Total de horas"
                     isRequired
-                    className="py-3"
+                    className="py-3 pb-6"
                 />
-
+                <div className="text-foreground-500">
+                        Fechas del periodo
+                </div>
                 <DateRangePicker 
+                    
                     startDate={startDate}
                     startDateId="start_date"
                     endDate={endDate}
@@ -379,33 +384,49 @@ export default function Form() {
             </div>
 
             <div className="flex flex-row w-full justify-around flex-wrap my-6">
-                <div className="flex flex-col justify-center items-center">
-                    <h2>Firma de Coordinador de Carrera</h2>
-                    <DragII lines={signCoordinador} setLines={setSignCoordinador} width={400} height={200}/>
-                    <div className="flex flex-row justify-around w-full">
-                        <Button onPress={()=>setSignCoordinador([])}> Borrar </Button>
-                        <Button> Crear Link </Button>
-                    </div> 
-                </div>
-                <div className="">
-                    <h2>Firma de Jefe Directo</h2>
-                    <DragII lines={signBoss} setLines={setSignBoss} width={400} height={200}/> 
-                    <Button onPress={()=>setSignBoss([])}> Borrar </Button> 
-                </div>
-                <div className="">
-                    <h2>Firma de recursos humanos</h2>
-                    <DragII lines={signRH} setLines={setSignRH} width={400} height={200}/> 
-                    <Button onPress={()=>setSignRH([])}> Borrar </Button> 
-                </div>
-
-                <div className="">
+                <div className="flex flex-col justify-center items-center my-4">
                     <h2>Firma del alumno</h2>
                     <DragII lines={signStudent} setLines={setSignStudent} width={400} height={200}/>  
                     <Button onPress={()=>setSignStudent([])}> Borrar </Button>
                 </div>
+                <div className="flex flex-col justify-center items-center my-4">
+                    <h2>Firma de Coordinador de Carrera</h2>
+                    <DragII lines={signCoordinador} setLines={setSignCoordinador} width={400} height={200}/>
+                    <div className="flex flex-row justify-around w-full">
+                        <Button onPress={()=>setSignCoordinador([])}> Borrar </Button>
+                        <Button> Enviar </Button>
+                    </div> 
+                </div>
+                <div className="flex flex-col justify-center items-center my-4">
+                    <h2>Firma de Jefe Directo</h2>
+                    <DragII lines={signBoss} setLines={setSignBoss} width={400} height={200}/> 
+                    <div className="flex flex-row justify-around w-full">
+                        <Button onPress={()=>setSignBoss([])}> Borrar </Button> 
+                        <Button> Enviar </Button>
+                    </div> 
+                </div>
+                <div className="flex flex-col justify-center items-center my-4">
+                    <h2>Firma de recursos humanos</h2>
+                    <DragII lines={signRH} setLines={setSignRH} width={400} height={200}/> 
+                    <div className="flex flex-row justify-around w-full">
+                        <Button onPress={()=>setSignRH([])}> Borrar </Button> 
+                        <Button> Enviar </Button>
+                    </div> 
+                </div>
             </div>
+            <div className="flex flex-row w-1/2 justify-evenly">
+                <Button type="submit" className="p-5 mt-10 bg-black text-white">
+                    <div className="p-5">
+                        Guardar progreso
+                    </div>
+                </Button>
 
-            <Button type="submit" className="p-5 mt-10">Enviar</Button>
+                <Button type="submit" className="p-5 mt-10 bg-black text-white" isDisabled>
+                    <div className="p-5">
+                        Enviar
+                    </div>
+                </Button>
+            </div>
         </form>
     </main>
   );
