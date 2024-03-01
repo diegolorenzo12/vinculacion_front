@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { Select, SelectItem } from '@nextui-org/react';
+import { Select, SelectItem, Selection } from '@nextui-org/react';
 import { schools } from '../Schools';
 
 import {
@@ -28,7 +28,7 @@ ChartJS.register(
   );
 
 
-export const PieOptions = {
+const PieOptions = {
     plugins: {
         legend: {
             position: 'top' as const,
@@ -41,7 +41,7 @@ export const PieOptions = {
     responsive: true,
   };
 
-export const BarOptions = {
+const BarOptions = {
     responsive: true,
     plugins: {
       legend: {
@@ -62,7 +62,7 @@ const randomNumberBetween = (min: number, max: number) => {
     
 const labelsPie = ['Haciendo Practicas', 'Sin empezar', "Terminadas"];
 
-export const PieData = {
+const PieData = {
   labels: ['Haciendo Practicas', 'Sin empezar', "Terminadas"],
   datasets: [
     {
@@ -86,7 +86,7 @@ export const PieData = {
 
 const LabelsSemester=  ['1', '2', '3', '4', '5', '6', '7', "8"];
 
-export const BarData = {
+const BarData = {
   labels: ['1', '2', '3', '4', '5', '6', '7', "8"],
   datasets: [
     {
@@ -98,10 +98,10 @@ export const BarData = {
 };
 
 
-export default function admin() {
-    const [selectedSchool, setSelectedSchool] = useState(null);
-    const [selectedMajor, setSelectedMajor] = useState(null);
-    const [selectedSemester, setSelectedSemester] = useState(null);
+export default function Admin() {
+    const [schoolRaw, setSchoolRaw] = React.useState<Selection>(new Set([]));
+    const [mayorRaw, setMayorRaw] = React.useState<Selection>(new Set([]));
+    const [semesterRaw, setSemesterRaw] = React.useState<Selection>(new Set([]));
 
     // State for chart data
     const [pieChartData, setPieChartData] = useState(PieData);
@@ -135,7 +135,7 @@ export default function admin() {
       useEffect(() => {
         updateChartData();
         // This effect should run when selectedSchool or selectedMajor changes
-      }, [selectedSchool, selectedMajor, selectedSemester]);
+      }, [schoolRaw, mayorRaw, semesterRaw]);
 
   return (
     <main className="flex w-full min-h-screen flex-col items-center justify-between p-4 bg-[#e2e2e2]">
@@ -145,7 +145,8 @@ export default function admin() {
                 label="Escuela"
                 className="py-3"
                 placeholder="Filter By"
-                onChange={(e) => setSelectedSchool(e.target.value)}
+                selectedKeys={schoolRaw}
+                onSelectionChange={setSchoolRaw}
             >
                 {
                     schools.map((item, index) => (<SelectItem key={index} value={index}>{item.name}</SelectItem>))
@@ -156,7 +157,8 @@ export default function admin() {
                 label="Carrera"
                 className="py-3"
                 placeholder="Filter By"
-                onChange={(e) => setSelectedMajor(e.target.value)}
+                selectedKeys={mayorRaw}
+                onSelectionChange={setMayorRaw}
             >
                 {
                      schools.flatMap((item, schoolIndex) => 
@@ -174,7 +176,8 @@ export default function admin() {
                 label="Semestre"
                 className="py-3"
                 placeholder="Filter By"
-                onChange={(e) => setSelectedSemester(e.target.value)}
+                selectedKeys={semesterRaw}
+                onSelectionChange={setSemesterRaw}
             >
                 {
                     LabelsSemester.map((item, index)=> (<SelectItem  key={`${index}-${item}`} value={item}>{item}</SelectItem>))
