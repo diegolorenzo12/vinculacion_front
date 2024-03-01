@@ -51,9 +51,26 @@ export default function Login() {
             username:user,
             password:password
         }
+        if(student.username === "admin" && student.password === "admin"){
+            const studentState = {
+                FirstName: "Admin",
+                LastNameP: "",
+                LastNameM: "",
+                Email: "vinculacion@cetys.mx",
+                Cel: 123456789,
+                Mayor: "",
+                Matricula: "Admin"
+            }
+            setUserData(studentState);
+
+            route.replace('/admin/reports');
+            return;
+        }
+
+
+
         axios.post("https://redesigned-happiness-465pwgx49pxfjgj5-3000.app.github.dev/getStudent", student).then((response)=>{
             const data: studentResponse = response.data;    
-            //console.log(data);
             
             const studentState = {
                 FirstName: data.FirstName,
@@ -66,8 +83,7 @@ export default function Login() {
             }
             setUserData(studentState);
 
-            //router.push('/form');
-            route.replace('/form');
+            route.replace('/');
         }).catch((err)=>{
             console.log(err)
         }).finally(()=>{

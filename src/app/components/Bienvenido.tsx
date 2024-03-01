@@ -13,7 +13,7 @@ const Bienvenido = () => {
                     <div className="absolute bg-white rounded-full w-60 h-60 justify-center border-4 border-yellow -left-8">
                         <div className="flex flex-col h-full justify-center p-5 text-center my-auto">
                             <p className="font-bold text-lg">¡Importante!</p>
-                            <p className="text-sm">Toda comunicación deberá hacerse a través de tu correo institucional con terminación "@cetys.edu.mx".</p>
+                            <p className="text-sm">Toda comunicación deberá hacerse a través de tu correo institucional con terminación &quot;@cetys.edu.mx&quot;.</p>
                         </div>
                     </div>
                     <div className="absolute bottom-0 right-0 h-36 w-1/2">

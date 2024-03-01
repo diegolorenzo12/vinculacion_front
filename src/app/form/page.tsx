@@ -6,7 +6,7 @@ import Paso from "../components/Paso";
 
 export default function Form(){
     return(
-        <>
+    <>
         <div className="p-4">
             <Header />
         </div>
@@ -21,6 +21,6 @@ export default function Form(){
             </div>
         </main>
         <Footer />
-        </>
-    )
+    </>
+  );
 }

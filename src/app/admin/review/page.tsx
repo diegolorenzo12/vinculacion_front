@@ -1,31 +1,85 @@
 'use client'
-import { useState, useEffect } from "react";
-import Image from "next/image";
-import DragII from "../components/Drag";
-import { Button, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow} from "@nextui-org/react";
+import React from 'react'
+import {
+    Table,
+    TableHeader,
+    TableBody,
+    TableColumn,
+    TableRow,
+    TableCell, 
+    Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure
+  } from "@nextui-org/react";
 
+export default function Review() {
+    const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
-type Line = { x: number; y: number }[];
-type Lines = Line[];
-
-
-export default function Signature() {
-    const [signature, setSignature] = useState<Lines>([]);
-
+const handlechange= ()=>{
+    console.log("cahnge and open")
+    onOpen();
+}
   return (
-    <main className="flex min-h-screen flex-col items-center justify-evently p-4 bg-[#ffdc14]">  
-    <Image
-        src="/cetys_logo.png"
-        width={200}
-        height={200}
-        alt="cetys logo"
-    />
-    <div className="bg-white px-20 py-8 m-5 w-full flex flex-col justify-center items-center">
-        <div className="flex justify-center items-center h-48 relative text-center">
-            <h2 className="text-9xl font-extrabold absolute opacity-20">1</h2>
-            <h1 className="text-2xl font-bold z-10">Reporte de Practicas Profesionales</h1>
-        </div>
-        <div className="my-4">
+    <div className="flex flex-col gap-3 justify-center items-center">
+    <h1 className="text-2xl font-bold my-4">Aprobar Reportes Pendientes</h1>
+    <Table 
+      selectionMode="single" 
+      aria-label="Example static collection table"
+      onSelectionChange={handlechange}
+      className='w-3/4'
+    >
+      <TableHeader>
+        <TableColumn>NOMBRE</TableColumn>
+        <TableColumn>CARRERA</TableColumn>
+        <TableColumn>SEMESTRE</TableColumn>
+        <TableColumn>STATUS</TableColumn>
+      </TableHeader>
+      <TableBody>
+        <TableRow key="1">
+          <TableCell>Tony Reichert</TableCell>
+          <TableCell>ICC</TableCell>
+          <TableCell>5</TableCell>
+          <TableCell>Reporte Inicial</TableCell>
+        </TableRow>
+        <TableRow key="2">
+          <TableCell>Zoey Lang</TableCell>
+          <TableCell>ICE</TableCell>
+          <TableCell>5</TableCell>
+          <TableCell>Reporte Inicial</TableCell>
+        </TableRow>
+        <TableRow key="3">
+          <TableCell>Jane Fisher</TableCell>
+          <TableCell>LAE</TableCell>
+          <TableCell>7</TableCell>
+          <TableCell>Reporte Parcial</TableCell>
+        </TableRow>
+        <TableRow key="4">
+          <TableCell>William Howard</TableCell>
+          <TableCell>ICE</TableCell>
+          <TableCell>8</TableCell>
+          <TableCell>Reporte Final</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+    <ModalComponent isOpen={isOpen} onOpenChange={onOpenChange}></ModalComponent>
+  </div>
+  )
+}
+
+
+
+function ModalComponent({isOpen, onOpenChange}: {isOpen: boolean, onOpenChange: (isOpen: boolean) => void}) {
+  return (
+    <Modal 
+        isOpen={isOpen} 
+        onOpenChange={onOpenChange}
+        size='5xl'
+        scrollBehavior="inside"
+    >
+    <ModalContent>
+      {(onClose) => (
+        <>
+          <ModalHeader className="flex flex-col gap-1">Nombre del alumno</ModalHeader>
+          <ModalBody>
+          <div className="my-4">
             <div className="flex-col justify-evently min-w-1/2">
                 <h2 className="font-semibold text-lg text-center">Datos del alumno</h2>
                 <div className="flex flex-col">
@@ -161,17 +215,48 @@ export default function Signature() {
                             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec.
                         </p>
                     </div>
+
+                    
+                    <div className="flex flex-col my-2">
+                        <h3 className="font-semibold">Firma del alumno: </h3>
+                        <p>
+                            Firma debe ir aqui
+                        </p>
+                    </div>
+                    <div className="flex flex-col my-2">
+                        <h3 className="font-semibold">Firma del coordinador de carrera: </h3>
+                        <p>
+                            Firma debe ir aqui
+                        </p>
+                    </div>
+                    <div className="flex flex-col my-2">
+                        <h3 className="font-semibold">Firma de RH: </h3>
+                        <p>
+                            Firma debe ir aqui
+                        </p>
+                    </div>
+                    <div className="flex flex-col my-2">
+                        <h3 className="font-semibold">Firma del jefe directo: </h3>
+                        <p>
+                            Firma debe ir aqui
+                        </p>
+                    </div>
                 </div>
             </div>
-            <div className="flex flex-col justify-center items-center my-3">
-                <h2>Firma del coordinador de carrera</h2>
-                {/* {<p>Firma del {firma}</p> } */}
-                <DragII lines={signature} setLines={setSignature} width={400} height={200}></DragII>
-                <Button onPress={()=>setSignature([])}>Borrar</Button>
-            </div>
-        </div>
-        <Button className="px-10 py-3">Enviar</Button>
-    </div>
-    </main>
-  );
+          </div>
+                    
+          </ModalBody>
+          <ModalFooter>
+            <Button color="danger" variant="light" onPress={onClose}>
+              Close
+            </Button>
+            <Button color="primary" onPress={onClose}>
+              Approve
+            </Button>
+          </ModalFooter>
+        </>
+      )}
+    </ModalContent>
+  </Modal>
+  )
 }
