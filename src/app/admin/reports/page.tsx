@@ -139,12 +139,6 @@ export default function admin() {
 
   return (
     <main className="flex w-full min-h-screen flex-col items-center justify-between p-4 bg-[#e2e2e2]">
-        <Image
-            src="/cetys_logo.png"
-            width={200}
-            height={200}
-            alt="Cetys logo"
-        />
         <h1 className="text-2xl font-bold mt-1">Stadistics</h1>
         <div className='flex flex-row w-2/3 justify-between'>
             <Select
