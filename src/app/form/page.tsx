@@ -62,12 +62,12 @@ export default function Form() {
             height={200}
             alt="Cetys logo"
         />
-        <h1 className="text-2xl font-bold">Reporte de Practicas Profesionales</h1>
+        <h1 className="text-2xl font-bold mt-1">Reporte de Practicas Profesionales</h1>
         <form className="m-2 flex flex-col justify-center items-center w-full">
-            <div className="w-2/3">
-                <h2>Datos del alumno</h2>
+            <div className="w-2/3 mt-3">
+                <h2 className="text-lg font-semibold">Datos del alumno</h2>
                 {
-                    userData && (
+                    !userData && (
                         <>
                             <Input 
                                 type="text"  
@@ -76,8 +76,7 @@ export default function Form() {
                                 className="py-3" 
                                 isReadOnly
                                 isDisabled
-                                value={userData.FirstName}
-                                //value={variable}
+                                //value={userData.FirstName}
                                 //onChange={(e) => setUser(e.target.variable)}
                             />
                             <Input 
@@ -87,8 +86,7 @@ export default function Form() {
                                 className="py-3" 
                                 isReadOnly
                                 isDisabled
-                                value={userData.LastNameP + " " + userData.LastNameM}
-                                //value={variable}
+                                //value={userData.LastNameP + " " + userData.LastNameM}
                                 //onChange={(e) => setUser(e.target.variable)}
                             />
                             <Input 
@@ -98,8 +96,7 @@ export default function Form() {
                                 className="py-3" 
                                 isReadOnly
                                 isDisabled
-                                value={userData.Matricula}
-                                //value={variable}
+                                //value={userData.Matricula}
                                 //onChange={(e) => setUser(e.target.variable)}
                             />
                             <Input 
@@ -109,8 +106,7 @@ export default function Form() {
                                 className="py-3" 
                                 isReadOnly
                                 isDisabled
-                                value={userData.Cel.toString()}
-                                //value=123456
+                                //value={userData.Cel.toString()}
                                 //onChange={(e) => setUser(e.target.variable)}
                             />
                             <Input 
@@ -120,8 +116,7 @@ export default function Form() {
                                 className="py-3" 
                                 isReadOnly
                                 isDisabled
-                                value={userData.Mayor}
-                                //value={variable}
+                                //value={userData.Mayor}
                                 //onChange={(e) => setUser(e.target.variable)}
                             />
                             <Input 
@@ -131,221 +126,223 @@ export default function Form() {
                                 className="py-3" 
                                 isReadOnly
                                 isDisabled
-                                value={userData.Email}
-                                //value={variable}
+                                //value={userData.Email}
                                 //onChange={(e) => setUser(e.target.variable)}
                             />
                         </>)
                 }
+                </div>
                 
+                <div className="w-2/3 mt-3">
 
-                <h2>Datos de la empresa</h2>
-                <Input 
-                    type="Text" 
-                    placeholder="" 
-                    label="Nombre Comercial" 
-                    isRequired 
-                    className="py-3" 
-                    //value={variable}
-                    //onChange={(e) => setUser(e.target.variable)}
-                />
-                <Input
-                    type="text"
-                    placeholder=""
-                    label="Razon Social"
-                    isRequired
-                    className="py-3"
-                />
-                <Select
-                    label="Giro de empresa"
-                    className="py-3"
-                    placeholder=""
-                    isRequired
-                >
-                    {
-                    giros.map((giro, index) => (<SelectItem key={index} value={index}>{giro}</SelectItem>))
-                    }
-                </Select>
+                    <h2 className="text-lg font-semibold">Datos de la empresa</h2>
+                    <Input 
+                        type="Text" 
+                        placeholder="" 
+                        label="Nombre Comercial" 
+                        isRequired 
+                        className="py-3" 
+                        //value={variable}
+                        //onChange={(e) => setUser(e.target.variable)}
+                    />
+                    <Input
+                        type="text"
+                        placeholder=""
+                        label="Razon Social"
+                        isRequired
+                        className="py-3"
+                    />
+                    <Select
+                        label="Giro de empresa"
+                        className="py-3"
+                        placeholder=""
+                        isRequired
+                    >
+                        {
+                        giros.map((giro, index) => (<SelectItem key={index} value={index}>{giro}</SelectItem>))
+                        }
+                    </Select>
 
-                <Input
-                    type="number"
-                    placeholder="ej: 23"
-                    label="Numero de empleados"
-                    isRequired
-                    className="py-3"
-                />
-                <h2>Domicilio de la empresa</h2>
-                <Input
-                    type="text"
-                    placeholder=""
-                    label="Calle y numero"
-                    isRequired
-                    className="py-3"
-                />
-                <Input
-                    type="text"
-                    placeholder=""
-                    label="Colonia o Parque Industrial"
-                    isRequired
-                    className="py-3"
-                />
-                 <Input
-                    type="text"
-                    placeholder=""
-                    label="Ciudad"
-                    isRequired
-                    className="py-3"
-                />
-                 <Input
-                    type="text"
-                    placeholder=""
-                    label="Estado / Provincia"
-                    isRequired
-                    className="py-3"
-                />
-                 <Input
-                    type="number"
-                    placeholder=""
-                    label="Codigo Postal"
-                    isRequired
-                    className="py-3"
-                />
+                    <Input
+                        type="number"
+                        placeholder="ej: 23"
+                        label="Numero de empleados"
+                        isRequired
+                        className="py-3"
+                    />
+                    <Input
+                        type="text"
+                        placeholder=""
+                        label="Calle y numero"
+                        isRequired
+                        className="py-3"
+                    />
+                    <Input
+                        type="text"
+                        placeholder=""
+                        label="Colonia o Parque Industrial"
+                        isRequired
+                        className="py-3"
+                    />
+                    <Input
+                        type="text"
+                        placeholder=""
+                        label="Ciudad"
+                        isRequired
+                        className="py-3"
+                    />
+                    <Input
+                        type="text"
+                        placeholder=""
+                        label="Estado / Provincia"
+                        isRequired
+                        className="py-3"
+                    />
+                    <Input
+                        type="number"
+                        placeholder=""
+                        label="Codigo Postal"
+                        isRequired
+                        className="py-3"
+                    />
 
-                <Select
-                    label="Pais"
-                    className="py-3"
-                    placeholder=""
-                    isRequired
-                >
-                    {
-                    pais.map((pais, index) => (<SelectItem key={index} value={index}>{pais}</SelectItem>))
-                    }
-                </Select>
+                    <Select
+                        label="Pais"
+                        className="py-3"
+                        placeholder=""
+                        isRequired
+                    >
+                        {
+                        pais.map((pais, index) => (<SelectItem key={index} value={index}>{pais}</SelectItem>))
+                        }
+                    </Select>
+                        
+                    <Input 
+                        type="number" 
+                        placeholder="(000) 000-0000" 
+                        label="Telefono" 
+                        isRequired 
+                        className="py-3" 
+                        //value={variable}
+                        //onChange={(e) => setUser(e.target.variable)}
+                    />
                     
-                <Input 
-                    type="number" 
-                    placeholder="(000) 000-0000" 
-                    label="Telefono" 
-                    isRequired 
-                    className="py-3" 
-                    //value={variable}
-                    //onChange={(e) => setUser(e.target.variable)}
-                />
-                
-                <Input
-                    type="text"
-                    placeholder=""
-                    label="Pagina web"
-                    isRequired
-                    className="py-3"
-                />
+                    <Input
+                        type="text"
+                        placeholder=""
+                        label="Pagina web"
+                        className="py-3"
+                    />
 
-                <Table>
-                    <TableHeader>
-                        <TableColumn> </TableColumn>
-                        <TableColumn>Jefe Directo</TableColumn>
-                        <TableColumn>Recursos Humanos</TableColumn>
-                    </TableHeader>
-                    <TableBody>
-                        <TableRow>
-                            <TableCell>Nombre</TableCell>
-                            <TableCell>
-                                <Input
-                                    type="text"
-                                    placeholder=""
-                                    isRequired
-                                    className="py-3"
-                                />
-                            </TableCell>
-                            <TableCell>
-                                <Input
-                                    type="text"
-                                    placeholder=""
-                                    isRequired
-                                    className="py-3"
-                                />
-                            </TableCell>
-                        </TableRow>
-                        <TableRow>
-                            <TableCell>Correo</TableCell>
-                            <TableCell>
-                                <Input
-                                    type="text"
-                                    placeholder=""
-                                    isRequired
-                                    className="py-3"
-                                />
-                            </TableCell>
-                            <TableCell>
-                                <Input
-                                    type="text"
-                                    placeholder=""
-                                    isRequired
-                                    className="py-3"
-                                />
-                            </TableCell>
-                        </TableRow>
-                        <TableRow>
-                            <TableCell>Telefono</TableCell>
-                            <TableCell>
-                                <Input
-                                    type="number"
-                                    placeholder=""
-                                    isRequired
-                                    className="py-3"
-                                />
-                            </TableCell>
-                            <TableCell>
-                                <Input
-                                    type="number"
-                                    placeholder=""
-                                    isRequired
-                                    className="py-3"
-                                />
-                            </TableCell>
-                        </TableRow>
-                        <TableRow>
-                            <TableCell>Puesto</TableCell>
-                            <TableCell>
-                                <Input
-                                    type="text"
-                                    placeholder=""
-                                    isRequired
-                                    className="py-3"
-                                />
-                            </TableCell>
-                            <TableCell>
-                                <Input
-                                    type="text"
-                                    placeholder=""
-                                    isRequired
-                                    className="py-3"
-                                />
-                            </TableCell>
-                        </TableRow>
-                        <TableRow>
-                            <TableCell>Departamento</TableCell>
-                            <TableCell>
-                                <Input
-                                    type="text"
-                                    placeholder=""
-                                    isRequired
-                                    className="py-3"
-                                />
-                            </TableCell>
-                            <TableCell>
-                                <Input
-                                    type="text"
-                                    placeholder=""
-                                    isRequired
-                                    className="py-3"
-                                />
-                            </TableCell>
-                        </TableRow>
-                    </TableBody>
-                </Table>
+                    <Table>
+                        <TableHeader>
+                            <TableColumn> </TableColumn>
+                            <TableColumn>Jefe Directo</TableColumn>
+                            <TableColumn>Recursos Humanos</TableColumn>
+                        </TableHeader>
+                        <TableBody>
+                            <TableRow>
+                                <TableCell>Nombre</TableCell>
+                                <TableCell>
+                                    <Input
+                                        type="text"
+                                        placeholder=""
+                                        isRequired
+                                        className="py-3"
+                                    />
+                                </TableCell>
+                                <TableCell>
+                                    <Input
+                                        type="text"
+                                        placeholder=""
+                                        isRequired
+                                        className="py-3"
+                                    />
+                                </TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell>Correo</TableCell>
+                                <TableCell>
+                                    <Input
+                                        type="text"
+                                        placeholder=""
+                                        isRequired
+                                        className="py-3"
+                                    />
+                                </TableCell>
+                                <TableCell>
+                                    <Input
+                                        type="text"
+                                        placeholder=""
+                                        isRequired
+                                        className="py-3"
+                                    />
+                                </TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell>Telefono</TableCell>
+                                <TableCell>
+                                    <Input
+                                        type="number"
+                                        placeholder=""
+                                        isRequired
+                                        className="py-3"
+                                    />
+                                </TableCell>
+                                <TableCell>
+                                    <Input
+                                        type="number"
+                                        placeholder=""
+                                        isRequired
+                                        className="py-3"
+                                    />
+                                </TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell>Puesto</TableCell>
+                                <TableCell>
+                                    <Input
+                                        type="text"
+                                        placeholder=""
+                                        isRequired
+                                        className="py-3"
+                                    />
+                                </TableCell>
+                                <TableCell>
+                                    <Input
+                                        type="text"
+                                        placeholder=""
+                                        isRequired
+                                        className="py-3"
+                                    />
+                                </TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell>Departamento</TableCell>
+                                <TableCell>
+                                    <Input
+                                        type="text"
+                                        placeholder=""
+                                        isRequired
+                                        className="py-3"
+                                    />
+                                </TableCell>
+                                <TableCell>
+                                    <Input
+                                        type="text"
+                                        placeholder=""
+                                        isRequired
+                                        className="py-3"
+                                    />
+                                </TableCell>
+                            </TableRow>
+                        </TableBody>
+                    </Table>
+                </div>
+
+            <div className="w-2/3 mt-3">
                 
-                <h2>Actividades de la Practica Profesional</h2>
+                <h2 className="text-lg font-semibold">Actividades de la Practica Profesional</h2>
                 <Textarea
                     type="text"
                     label="Describe en máximo 100 caracteres las principales actividades realizadas de Prácticas Profesionales durante este periodo:"
@@ -371,7 +368,13 @@ export default function Form() {
                     }}
                     focusedInput={focusedInput}
                     onFocusChange={(focusedInput) => setFocusedInput(focusedInput)}
+                    isOutsideRange={(day) => {
+                        const today = moment();
+                        const oneWeekAgo = moment().subtract(1, 'weeks');
+                        return day.isBefore(oneWeekAgo, 'day');
+                    }}
                 />
+                
 
             </div>
 
