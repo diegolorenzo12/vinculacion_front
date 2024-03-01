@@ -4,6 +4,8 @@ import { useState } from "react";
 import axios from "axios";
 import { useUserContext } from "../providers";
 import { useRouter } from 'next/navigation'
+import { motion } from 'framer-motion';
+
 
 
 interface studentLogin{
@@ -30,11 +32,21 @@ interface studentResponse{
     Matricula: string;
   }
 
+  const shakeAnimation = {
+    shake: {
+      x: [0, -10, 10, -10, 10, 0],
+      transition: { type: 'linear', duration: 0.5 }
+    }
+  };
+  
+
 export default function Login() {
     const [user, setUser] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [loading, setLoading] = useState<boolean>(false);
     const { setUserData } = useUserContext();
+    const [shake, setShake] = useState<boolean>(false);
+
 
     const route = useRouter();
 
@@ -85,7 +97,8 @@ export default function Login() {
 
             route.replace('/');
         }).catch((err)=>{
-            console.log(err)
+            setShake(true);
+            setTimeout(() => setShake(false), 500); 
         }).finally(()=>{
             setLoading(false);
         })
@@ -93,31 +106,33 @@ export default function Login() {
 
   return (
     <main className="flex min-h-screen flex-col items-center w-full justify-center bg-yellow">
-        <Card className="lg:w-1/3 md:w-1/2 w-[90%]">
-            <CardBody className="flex-col justify-center items-center w-full py-6"  style={{ overflowX: 'hidden' }}>
-                <h1 className="text-xl font-bold">Inicio de sesión</h1>
-                <form onSubmit={handleSubmit} className="px-2 m-2 flex flex-col justify-center items-center w-full">
-                    <Input 
-                        type="text" 
-                        placeholder="m012345" 
-                        label="Matrícula" 
-                        isRequired 
-                        className="py-3" 
-                        value={user}
-                        onChange={(e) => setUser(e.target.value)}
-                    />
-                    <Input 
-                        type="password" 
-                        label="Contraseña" 
-                        isRequired 
-                        className="py-3"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                    <Button type="submit" color="primary" className="bg-black w-full py-3" isLoading={loading}>Entrar</Button>
-                </form>
-            </CardBody>
-        </Card>
+        <motion.div className="lg:w-1/3 md:w-1/2 w-[90%]" variants={shakeAnimation} animate={shake ? 'shake' : ''}>            
+            <Card className="w-full">
+                <CardBody className="flex-col justify-center items-center w-full py-6"  style={{ overflowX: 'hidden' }}>
+                    <h1 className="text-xl font-bold">Inicio de sesión</h1>
+                    <form onSubmit={handleSubmit} className="px-2 m-2 flex flex-col justify-center items-center w-full">
+                        <Input 
+                            type="text" 
+                            placeholder="m012345" 
+                            label="Matrícula" 
+                            isRequired 
+                            className="py-3" 
+                            value={user}
+                            onChange={(e) => setUser(e.target.value)}
+                        />
+                        <Input 
+                            type="password" 
+                            label="Contraseña" 
+                            isRequired 
+                            className="py-3"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                        <Button type="submit" color="primary" className="bg-black w-full py-3" isLoading={loading}>Entrar</Button>
+                    </form>
+                </CardBody>
+            </Card>
+        </motion.div>
     </main>
   );
 }

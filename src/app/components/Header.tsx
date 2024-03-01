@@ -18,7 +18,7 @@ export default function Header(){
                 />
             </Link>
             <HeaderItem text="Carta de Presentación" href="/"/>
-            <HeaderItem text="Registra tus Prácticas" href="/form" />
+            {userData && (<HeaderItem text="Registra tus Prácticas" href="/form" />)}
             <HeaderItem text="Envía tu CV" href="/"/>
             <HeaderItem text="Vacantes" href="/"/>
             {userData ? 
