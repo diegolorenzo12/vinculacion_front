@@ -1,10 +1,10 @@
 'use client'
 import { Input , Button, Textarea, Popover, PopoverTrigger, PopoverContent, Select, SelectItem, Link} from "@nextui-org/react";
 import {  Table,  TableHeader,  TableBody,  TableColumn,  TableRow,  TableCell} from "@nextui-org/react";
-import DragII from "../components/Drag";
+import DragII from "../../components/Drag";
 import { useState } from "react";
 import Image from "next/image";
-import { useUserContext } from "../providers";
+import { useUserContext } from "../../providers";
 import { DateRangePicker } from 'react-dates';
 import moment, { Moment } from 'moment';
 import 'react-dates/initialize';

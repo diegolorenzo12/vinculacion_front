@@ -17,10 +17,10 @@ export default function Header(){
                     quality={100}
                 />
             </Link>
-            <HeaderItem text="Carta de Presentación" href="/"/>
+            <HeaderItem text="Carta de Presentación" href="/carta-presentacion"/>
             {userData && (<HeaderItem text="Registra tus Prácticas" href="/form" />)}
-            <HeaderItem text="Envía tu CV" href="/"/>
-            <HeaderItem text="Vacantes" href="/"/>
+            <HeaderItem text="Envía tu CV" href="/cv"/>
+            <HeaderItem text="Vacantes" href="/vacantes"/>
             {userData ? 
                 (
                     <p className="font-light italic text-gray-700 flex self-center text-xs"><Link href="/login">{userData.Matricula}</Link></p>

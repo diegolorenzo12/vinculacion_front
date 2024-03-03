@@ -1,15 +1,12 @@
 'use client'
 import FormComponent from "./form";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import Paso from "../components/Paso";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+import Paso from "../../components/Paso";
 
 export default function Form(){
     return(
     <>
-        <div className="p-4">
-            <Header />
-        </div>
         <main>
             <div className="bg-yellow py-10">
                 <p className="font-bold text-5xl text-center">Registra tus Prácticas</p>
@@ -20,7 +17,6 @@ export default function Form(){
                 </div>
             </div>
         </main>
-        <Footer />
     </>
   );
 }
