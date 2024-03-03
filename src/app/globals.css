@@ -2,3 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.text-outline-yellow{
+    background-color: #F9D40B;
+    background-clip: text;
+    -webkit-text-stroke-color: transparent;
+    -webkit-text-stroke-width: calc(1em/8);
+    -webkit-background-clip: text;
+}
